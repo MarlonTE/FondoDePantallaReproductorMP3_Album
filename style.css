@@ -344,18 +344,18 @@ li:active {
 
   .Album {
     width: 90vw;
-    margin-bottom: 20px;
+    margin: 0px;
   }
 
   .Img-Album {
-    width: 60vw; /* Reduce the width for smaller screens */
-    max-width: 200px; /* Limit the maximum size */
-    margin-top: 20px; /* Add spacing above the image */
-    border-radius: 10%; /* Keep the rounded corners */
+    width: 80vw; /* Increase the width for smaller screens */
+    max-width: 450px; /* Limit the maximum size */
+    margin: 25px;
+    border-radius: 5%; /* Keep the rounded corners */
   }
 
   h1 {
-    font-size: 1.2rem; /* Adjust the font size for the album title */
+    font-size: 1.3rem; /* Slightly larger font size for the album title */
     text-align: center;
   }
 
@@ -403,10 +403,10 @@ li:active {
   #btn__PlayPause,
   #btn__Adelantar,
   #btn__Posterior {
-    height: 35px; /* Smaller buttons */
-    width: 35px;
-    font-size: 0.9rem;
-    margin: 10px;
+    height: 50px; /* Smaller buttons */
+    width: 50px;
+    font-size: 1rem;
+    margin: 15px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
     display: flex;
@@ -455,13 +455,13 @@ li:active {
 
   #Contenedor {
     width: 90%;
-    height: 10px;
-    margin-top: 20px;
+    height: 15px;
+    margin: 20px;
   }
 
   #sliderDeRango {
     width: 95%; /* Use more width on small screens */
-    height: 8px; /* Slightly smaller slider */
+    height: 15px; /* Slightly smaller slider */
   }
 
   #barraPersonalizable {
@@ -469,7 +469,7 @@ li:active {
   }
 
   #Controls {
-    padding: 10px 0; /* Add some padding for better spacing */
+    padding: 10px; /* Add some padding for better spacing */
   }
 
   #btn__Anterior,
@@ -477,14 +477,14 @@ li:active {
   #btn__PlayPause,
   #btn__Adelantar,
   #btn__Posterior {
-    margin: 0 3px; /* Reduce spacing between buttons */
+    margin: 3px; /* Reduce spacing between buttons */
   }
 }
 
 /* Medium Devices (Tablets) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .Img-Album {
-    width: 60vw; /* Adjust album size for tablets */
+    width: 50vw; /* Adjust album size for tablets */
     max-width: 250px;
   }
 
@@ -515,21 +515,17 @@ li:active {
 /* Large Devices (Desktops) */
 @media (min-width: 1025px) {
   .Img-Album {
-    width: 50vw; /* Smaller album cover for large screens */
-    max-width: 300px;
+    width: 35vw; /* Smaller album cover for large screens */
+    max-width: 700px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   #sliderDeRango {
     width: 80%;
-    height: 10px;
-  }
-
-  #Controls {
-    height: 70px;
+    height: 15px;
   }
 
   #btn__Anterior,
