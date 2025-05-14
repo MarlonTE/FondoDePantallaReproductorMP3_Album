@@ -28,13 +28,13 @@
     </div>
 
     <div class="Album">
-        <h1>Whirr</h1>
         <img class="Img-Album" src="img/feels-like-you.png" alt="Album Art">
         <h1>Feels Like You</h1>
     </div>
 
+    <input id="sliderDeRango" type="range" value="0" onchange="javascript:coordinar();" />
+
     <div id="Controls">
-        <input id="checkbox" type="checkbox" checked>
         <button id="btn__Anterior" onclick="javascript:Anterior();"><<</button>
         <button id="btn__Atrasar" onclick="javascript:Atrasar();"><</button>
         <button id="btn__PlayPause" onclick="javascript:PlayPause();">P</button>
@@ -43,11 +43,8 @@
     </div>
 </div>
 
-    <audio id="audio" preload onended="javascript:Posterior();" src="musica/whirr/01Mellow.mp3"></audio>
-    <div id="Contenedor">
-        <input id="sliderDeRango" type="range" value="0" onchange="javascript:coordinar();"/>
-        <div id="barraPersonalizable" style="width:0px;"></div>
-    </div>
+<audio id="audio" preload onended="javascript:Posterior();" src="musica/whirr/01Mellow.mp3"></audio>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="main.js"></script>
 </body>
