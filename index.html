@@ -7,48 +7,66 @@
     <title>Reproductor</title>
 </head>
 <body>
+  <!-- Background Image -->
+  <div class="Background">
+    <img src="img/feels-like-you.png" alt="Blurred Background" class="Blurred-Background">
+  </div>
 
-<div class="Container">
-    <button id="toggleSidebar">☰</button> <!-- Sidebar toggle button -->
-
+  <div class="Container">
+    <!-- Sidebar -->
     <div class="Sidebar" id="sidebar">
-        <h2>Song List</h2>
-        <ol id="songList">
-            <li onclick="selectSong(0)">Mellow</li>
-            <li onclick="selectSong(1)">Wavelength</li>
-            <li onclick="selectSong(2)">Younger Than You</li>
-            <li onclick="selectSong(3)">Rose Cold</li>
-            <li onclick="selectSong(4)">Before You Head Off</li>
-            <li onclick="selectSong(5)">How Time Stretches</li>
-            <li onclick="selectSong(6)">Rental</li>
-            <li onclick="selectSong(7)">Vividly</li>
-            <li onclick="selectSong(8)">Play The Slow Ones</li>
-            <li onclick="selectSong(9)">Under The Same Name</li>
-        </ol>
+      <h2>Song List</h2>
+      <ol id="songList">
+        <li onclick="selectSong(0)">Mellow</li>
+        <li onclick="selectSong(1)">Wavelength</li>
+        <li onclick="selectSong(2)">Younger Than You</li>
+        <li onclick="selectSong(3)">Rose Cold</li>
+        <li onclick="selectSong(4)">Before You Head Off</li>
+        <li onclick="selectSong(5)">How Time Stretches</li>
+        <li onclick="selectSong(6)">Rental</li>
+        <li onclick="selectSong(7)">Vividly</li>
+        <li onclick="selectSong(8)">Play The Slow Ones</li>
+        <li onclick="selectSong(9)">Under The Same Name</li>
+      </ol>
     </div>
 
+    <!-- Toggle Button -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Album Cover -->
     <div class="Album">
-        <img class="Img-Album" src="img/feels-like-you.png" alt="Album Art">
-        <h1>Feels Like You</h1>
-    </div>
-
-    <div id="Controls">
+      <img class="Img-Album" src="img/feels-like-you.png" alt="Album Art">
+      <h1>Feels Like You</h1>
+      
+      <!-- Controls -->
+      <div id="Controls">
         <div id="progressBarContainer">
-            <div id="progressBar"></div>
+          <div id="progressBar"></div>
         </div>
         <div>
-            <button id="btn__Anterior" onclick="Anterior();"><<</button>
-            <button id="btn__Atrasar" onclick="Atrasar();"><</button>
-            <button id="btn__PlayPause" onclick="PlayPause();">P</button>
-            <button id="btn__Adelantar" onclick="Adelantar();">></button>
-            <button id="btn__Posterior" onclick="Posterior();">>></button>
+          <button id="btn__Anterior" onclick="Anterior();"><<</button>
+          <button id="btn__Atrasar" onclick="Atrasar();"><</button>
+          <button id="btn__PlayPause" onclick="PlayPause();">P</button>
+          <button id="btn__Adelantar" onclick="Adelantar();">></button>
+          <button id="btn__Posterior" onclick="Posterior();">>></button>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<audio id="audio" preload="metadata" onended="Posterior();" src="musica/whirr/01Mellow.mp3"></audio>
+  <!-- Audio Element -->
+  <audio id="audio" preload="metadata" onended="Posterior();" src="musica/whirr/01Mellow.mp3"></audio>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="main.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="main.js"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open"); // Toggle the "open" class
+    }
+
+    document.getElementById("toggleSidebar").addEventListener("click", toggleSidebar);
+  </script>
 </body>
 </html>
