@@ -348,14 +348,14 @@ li:active {
   }
 
   .Img-Album {
-    width: 90vw; /* Larger album cover for small screens */
-    max-width: none; /* Remove max-width restriction */
-    margin-top: 5vh;
-    border-radius: 10%;
+    width: 60vw; /* Reduce the width for smaller screens */
+    max-width: 200px; /* Limit the maximum size */
+    margin-top: 20px; /* Add spacing above the image */
+    border-radius: 10%; /* Keep the rounded corners */
   }
 
   h1 {
-    font-size: 1.2rem; /* Smaller font size */
+    font-size: 1.2rem; /* Adjust the font size for the album title */
     text-align: center;
   }
 
@@ -469,7 +469,7 @@ li:active {
   }
 
   #Controls {
-    padding: 5px 0; /* Reduce padding for smaller screens */
+    padding: 10px 0; /* Add some padding for better spacing */
   }
 
   #btn__Anterior,
