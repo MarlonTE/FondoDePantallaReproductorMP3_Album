@@ -90,73 +90,132 @@ h1 {
   margin-bottom: 10px;
 }
 
+/* Buttons and Slider Bar Container */
+#Controls {
+  position: fixed; /* Fix at the bottom of the viewport */
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column; /* Stack slider and buttons vertically */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 10; /* Ensure it stays above other elements */
+}
+
 /* Slider Bar */
 #sliderDeRango {
-  width: 90%;
-  height: 35px; /* Increase height for a larger hitbox */
-  margin: 10px 0;
-  background-color: transparent; /* Keep the background transparent */
+  width: 90%; /* Full width for slider */
+  height: 8px; /* Height of the progress bar */
+  margin-bottom: 10px; /* Add spacing between slider and buttons */
+  background-color: rgba(255, 255, 255, 0.1); /* Background of the progress bar */
+  border-radius: 5px; /* Rounded corners for the bar */
   appearance: none;
   cursor: pointer;
-  position: relative; /* Allow better control over the thumb */
+  position: relative;
+  overflow: hidden; /* Ensure the progress stays within the bar */
 }
 
 #sliderDeRango::-webkit-slider-runnable-track {
   width: 100%;
-  height: 5px; /* Visual height of the slider */
-  background-color: rgba(255, 255, 255, 0.1);
+  height: 100%; /* Match the height of the slider */
+  background-color: rgba(255, 255, 255, 0.3); /* Background of the track */
   border-radius: 5px;
 }
 
 #sliderDeRango::-webkit-slider-thumb {
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: -5px; /* Center the thumb vertically */
+  appearance: none; /* Remove the circular thumb */
+  width: 0; /* No visible thumb */
+  height: 0;
 }
 
-#sliderDeRango::-moz-range-track {
-  width: 100%;
-  height: 5px; /* Visual height of the slider */
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-}
-
-#sliderDeRango::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-#sliderDeRango::-ms-track {
-  width: 100%;
-  height: 5px; /* Visual height of the slider */
-  background-color: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-
+#sliderDeRango::-moz-range-thumb,
 #sliderDeRango::-ms-thumb {
-  width: 15px;
-  height: 15px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  cursor: pointer;
+  width: 0; /* No visible thumb */
+  height: 0;
+  appearance: none;
+}
+
+/* Progress Bar Fill */
+#sliderDeRango::-moz-range-progress {
+  background-color: rgba(255, 255, 255, 0.8); /* Progress fill color */
+  height: 100%;
+  border-radius: 5px;
 }
 
 #sliderDeRango::-ms-fill-lower {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.8); /* Progress fill color */
   border-radius: 5px;
 }
 
-#sliderDeRango::-ms-fill-upper {
+/* Progress Bar Container */
+#progressBarContainer {
+  width: 90%; /* Full width for the progress bar */
+  height: 8px; /* Height of the progress bar */
+  background-color: rgba(255, 255, 255, 0.1); /* Background of the progress bar */
+  border-radius: 5px; /* Rounded corners for the bar */
+  overflow: hidden; /* Ensure the progress stays within the container */
+  position: relative; /* Allow absolute positioning for the fill */
+  margin-bottom: 10px; /* Add spacing between the progress bar and buttons */
+}
+
+/* Progress Bar Fill */
+#progressBar {
+  width: 0%; /* Initial progress is 0% */
+  height: 100%; /* Match the height of the container */
+  background-color: rgba(255, 255, 255, 0.8); /* Progress fill color */
+  border-radius: 5px; /* Match the container's rounded corners */
+  position: absolute; /* Align the progress bar to the left */
+  top: 0; /* Align to the top of the container */
+  left: 0; /* Start from the left edge */
+  transition: width 0.1s linear; /* Smooth progress update */
+}
+
+/* Buttons */
+#btn__Anterior,
+#btn__Atrasar,
+#btn__PlayPause,
+#btn__Adelantar,
+#btn__Posterior {
+  height: 40px;
+  width: 40px;
+  font-size: 1rem;
+  border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, border 0.3s;
+  margin: 0 5px; /* Add spacing between buttons */
+}
+
+#btn__Anterior:hover,
+#btn__Atrasar:hover,
+#btn__PlayPause:hover,
+#btn__Adelantar:hover,
+#btn__Posterior:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#btn__Anterior:active,
+#btn__Atrasar:active,
+#btn__PlayPause:active,
+#btn__Adelantar:active,
+#btn__Posterior:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Fix Buttons Layout */
+#Controls > div {
+  display: flex; /* Align buttons horizontally */
+  flex-direction: row; /* Ensure buttons are in a row */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 /* Music List */
@@ -193,53 +252,6 @@ li:hover {
 li:active {
   background-color: rgba(255, 255, 255, 0.3);
   opacity: 0.6;
-}
-
-/* Buttons at the Bottom */
-#Controls {
-  position: relative;
-  width: 100%;
-  height: 60px;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 5px 0;
-}
-
-#btn__Anterior,
-#btn__Atrasar,
-#btn__PlayPause,
-#btn__Adelantar,
-#btn__Posterior {
-  height: 40px;
-  width: 40px;
-  font-size: 1rem;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.3s, border 0.3s;
-}
-
-#btn__Anterior:hover,
-#btn__Atrasar:hover,
-#btn__PlayPause:hover,
-#btn__Adelantar:hover,
-#btn__Posterior:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-#btn__Anterior:active,
-#btn__Atrasar:active,
-#btn__PlayPause:active,
-#btn__Adelantar:active,
-#btn__Posterior:active {
-  background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Sidebar Styles */
@@ -450,12 +462,24 @@ li:active {
   }
 
   #sliderDeRango {
-    width: 95%; /* Full width for slider */
-    height: 10px;
+    width: 95%; /* Use more width on small screens */
+    height: 8px; /* Slightly smaller slider */
   }
 
   #barraPersonalizable {
     height: 5px;
+  }
+
+  #Controls {
+    padding: 5px 0; /* Reduce padding for smaller screens */
+  }
+
+  #btn__Anterior,
+  #btn__Atrasar,
+  #btn__PlayPause,
+  #btn__Adelantar,
+  #btn__Posterior {
+    margin: 0 3px; /* Reduce spacing between buttons */
   }
 }
 
@@ -472,6 +496,7 @@ li:active {
 
   #sliderDeRango {
     width: 90%;
+    height: 10px;
   }
 
   #Controls {
@@ -502,6 +527,7 @@ li:active {
 
   #sliderDeRango {
     width: 80%;
+    height: 10px;
   }
 
   #Controls {

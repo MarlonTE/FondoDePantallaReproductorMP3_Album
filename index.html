@@ -32,18 +32,21 @@
         <h1>Feels Like You</h1>
     </div>
 
-    <input id="sliderDeRango" type="range" value="0" onchange="javascript:coordinar();" />
-
     <div id="Controls">
-        <button id="btn__Anterior" onclick="javascript:Anterior();"><<</button>
-        <button id="btn__Atrasar" onclick="javascript:Atrasar();"><</button>
-        <button id="btn__PlayPause" onclick="javascript:PlayPause();">P</button>
-        <button id="btn__Adelantar" onclick="javascript:Adelantar();">></button>
-        <button id="btn__Posterior" onclick="javascript:Posterior();">>></button>
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+        <div>
+            <button id="btn__Anterior" onclick="Anterior();"><<</button>
+            <button id="btn__Atrasar" onclick="Atrasar();"><</button>
+            <button id="btn__PlayPause" onclick="PlayPause();">P</button>
+            <button id="btn__Adelantar" onclick="Adelantar();">></button>
+            <button id="btn__Posterior" onclick="Posterior();">>></button>
+        </div>
     </div>
 </div>
 
-<audio id="audio" preload onended="javascript:Posterior();" src="musica/whirr/01Mellow.mp3"></audio>
+<audio id="audio" preload="metadata" onended="Posterior();" src="musica/whirr/01Mellow.mp3"></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="main.js"></script>
