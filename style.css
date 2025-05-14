@@ -1,141 +1,103 @@
-::-webkit-scrollbar { display: none; }
+::-webkit-scrollbar {
+  display: none;
+}
 @font-face {
-    font-family: 'Montserrat';
-    src: url('Montserrat.ttf') format('truetype');
-  }
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    transition: all 0.3s;
-    user-select: none;
-    color: #fff;
-    font-family: Montserrat;
-    font-weight: 200;
+  font-family: "Montserrat";
+  src: url("Montserrat.ttf") format("truetype");
 }
-body{
-    background-color: rgba(0,0,0);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s;
+  user-select: none;
+  color: #fff;
+  font-family: Montserrat;
+  font-weight: 200;
+}
+body {
+  background-color: rgba(0, 0, 0);
 }
 
+/* General Styles */
 .Container {
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.Img-Blur {
-    opacity: 0.2;
-    width: 500%;
-    animation: shake 15s infinite;
-    filter: saturate(300%);
-    animation: pulse 30s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(5px, 5px) rotate(0deg); }
-    10% { transform: translate(-5px, -2px) rotate(-70deg); }
-    20% { transform: translate(-3px, 0px) rotate(20deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(5px, -5px) rotate(70deg); }
-    50% { transform: translate(-5px, 2px) rotate(-20deg); }
-    60% { transform: translate(-3px, 5px) rotate(0deg); }
-    70% { transform: translate(3px, 5px) rotate(-20deg); }
-    80% { transform: translate(-5px, -5px) rotate(20deg); }
-    90% { transform: translate(5px, 2px) rotate(0deg); }
-    100% { transform: translate(5px, -2px) rotate(-3000deg); }
-  }
-
-  @keyframes pulse {
-    0% {
-        transform: scale(1.5);
-    }
-
-    50% {
-        transform: scale(2.5);
-    }
-
-    100% {
-        transform: scale(1.5);
-    }
-}
-
-.Background-Blur {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(5px);
-    display: grid;
-    grid-template-columns: 10vw 1fr 1fr 10vw;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 .Album {
-    grid-column: 2 / 3;
-    background-color: rgba(0, 0, 0, 0);
-    width: 35vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    overflow: hidden;
+  width: 90%;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Img-Album {
-    margin-top: 2vh;
-    width: 80%;
-    border-radius: 5%;
-    box-shadow: rgba(255, 255, 255, 0.01) 0px 0px 25px 25px;
-    filter: saturate(150%);
+  width: 80%;
+  border-radius: 10%;
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 0px 15px 15px;
+  margin-bottom: 2vh;
 }
 
 h1 {
-    margin-top: 2vh;
-    font-family: Montserrat;
-    font-weight: 200;
-    font-size: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2vh;
 }
 
 .Music-List {
-    grid-column: 3 / 4;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-input {
-    margin-top: 2vh;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    font-family: Montserrat;
-    font-weight: 150;
-    cursor: pointer;
-    font-size: 1.5rem;
+  width: 90%;
+  margin-top: 2vh;
+  overflow-y: auto;
+  max-height: 40vh; /* Limit height for scrolling */
 }
 
 ol {
-    list-style-type: decimal;
-    font-size: 1.5rem;
+  list-style-type: none; /* Remove default numbering */
+  padding: 0;
+  margin: 0;
 }
 
 li {
-    margin: 2vh;
+  margin: 1vh 0;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
 }
 
 li:hover {
-    opacity: 0.5;
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 0.8;
 }
 
 li:active {
-    opacity: 0.2;
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 0.6;
+}
+
+/* Buttons and Checkbox at the Bottom */
+#Controls {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
 }
 
 #checkbox,
@@ -144,39 +106,17 @@ li:active {
 #btn__PlayPause,
 #btn__Adelantar,
 #btn__Posterior {
-    position: absolute;
-    bottom: 0;
-    border: none;
-    background: rgba(0, 0, 0, 0);
-    color: #fff;
-    height: 20px;
-    width: 20px;
-    font-size: 80%;
-}
-
-#checkbox::-ms-check {
-    background: rgba(55,55,55,0);
-    border: 1px solid rgba(255,255,255,0);
-}
-
-#btn__Anterior {
-    left: calc(20px * 1);
-}
-
-#btn__Atrasar {
-    left: calc(20px * 2);
-}
-
-#btn__PlayPause {
-    left: calc(20px * 3);
-}
-
-#btn__Adelantar {
-    left: calc(20px * 4);
-}
-
-#btn__Posterior {
-    left: calc(20px * 5);
+  height: 50px;
+  width: 50px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, border 0.3s;
 }
 
 #checkbox:hover,
@@ -185,105 +125,149 @@ li:active {
 #btn__PlayPause:hover,
 #btn__Adelantar:hover,
 #btn__Posterior:hover {
-    border: 1px solid rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-
-
-
-
-
-
-
-
-#Contenedor{
-    position: absolute;
-    right: 0;
-    bottom: 0px;
-    width: calc(100% - calc(25px * 6));
-    height: 5px;
-    overflow: hidden;
-    background-color: rgba(255,255,255,0.1);
+#checkbox:active,
+#btn__Anterior:active,
+#btn__Atrasar:active,
+#btn__PlayPause:active,
+#btn__Adelantar:active,
+#btn__Posterior:active {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-#sliderDeRango:hover ~ contenedor{
-    height: 25px;
-}
-#sliderDeRango {
-    position: absolute;
-    z-index: 1000;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 80%;
-    opacity: 0;
-}
-#barraPersonalizable{
-    position: absolute;
-    left: 0;
-    bottom: 0px;
-    background-color: rgba(255,255,255,0.6);
-    height: 80%;
-}
-
+/* Mobile-specific styles */
 @media (max-width: 768px) {
-    .Container {
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-    }
+  .Container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+  }
 
-    .Album {
-        width: 80vw;
-    }
+  .Album {
+    width: 90vw;
+    margin-bottom: 20px;
+  }
 
-    .Img-Album {
-        width: 90%;
-        margin-top: 5vh;
-    }
+  .Img-Album {
+    width: 100%;
+    margin-top: 5vh;
+    border-radius: 10%;
+  }
 
-    h1 {
-        font-size: 2rem;
-        text-align: center;
-    }
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
 
-    .Music-List {
-        margin-top: 5vh;
-    }
+  .Music-List {
+    margin-top: 5vh;
+    width: 100%;
+    padding: 0 10px;
+  }
 
-    input {
-        font-size: 1rem;
-    }
+  input {
+    font-size: 1rem;
+    padding: 5px;
+  }
 
-    ol {
-        font-size: 1rem;
-    }
+  ol {
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Remove default numbering for a cleaner look */
+  }
 
-    li {
-        margin: 1vh;
-    }
+  li {
+    margin: 1vh 0;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Add a subtle background for better visibility */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+  }
 
-    #checkbox,
-    #btn__Anterior,
-    #btn__Atrasar,
-    #btn__PlayPause,
-    #btn__Adelantar,
-    #btn__Posterior {
-        height: 15px;
-        width: 15px;
-        font-size: 60%;
-    }
+  li:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+    opacity: 0.8;
+  }
 
-    #Contenedor {
-        width: calc(100% - calc(15px * 6));
-        height: 3px;
-    }
+  li:active {
+    background-color: rgba(255, 255, 255, 0.3); /* Active state for touch feedback */
+    opacity: 0.6;
+  }
 
-    #sliderDeRango:hover ~ contenedor {
-        height: 15px;
-    }
+  #checkbox,
+  #btn__Anterior,
+  #btn__Atrasar,
+  #btn__PlayPause,
+  #btn__Adelantar,
+  #btn__Posterior {
+    height: 50px; /* Increase button size for better tap targets */
+    width: 50px;
+    font-size: 1.2rem; /* Adjust font size for better readability */
+    margin: 10px; /* Add spacing between buttons */
+    border-radius: 10px; /* Add rounded corners for a modern look */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background for better visibility */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    #barraPersonalizable {
-        height: 60%;
-    }
+  #checkbox:hover,
+  #btn__Anterior:hover,
+  #btn__Atrasar:hover,
+  #btn__PlayPause:hover,
+  #btn__Adelantar:hover,
+  #btn__Posterior:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Add a border for hover feedback */
+  }
+
+  #checkbox:active,
+  #btn__Anterior:active,
+  #btn__Atrasar:active,
+  #btn__PlayPause:active,
+  #btn__Adelantar:active,
+  #btn__Posterior:active {
+    background-color: rgba(255, 255, 255, 0.3); /* Active state for touch feedback */
+  }
+
+  #btn__Anterior {
+    left: 10%; /* Adjust positioning for better alignment */
+  }
+
+  #btn__Atrasar {
+    left: 25%;
+  }
+
+  #btn__PlayPause {
+    left: 40%;
+  }
+
+  #btn__Adelantar {
+    left: 55%;
+  }
+
+  #btn__Posterior {
+    left: 70%;
+  }
+
+  #Contenedor {
+    width: 90%;
+    height: 10px; /* Adjust height for better usability */
+    margin-top: 20px; /* Add spacing above the slider */
+  }
+
+  #sliderDeRango {
+    height: 10px;
+  }
+
+  #barraPersonalizable {
+    height: 5px;
+  }
 }
