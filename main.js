@@ -11,6 +11,19 @@ const songs = [
   "musica/whirr/10UnderTheSameName.mp3",
 ];
 
+const songTitles = [
+  "Mellow",
+  "Wavelength",
+  "Younger Than You",
+  "Rose Cold",
+  "Before You Head Off",
+  "How Time Stretches",
+  "Rental",
+  "Vividly",
+  "Play The Slow Ones",
+  "Under The Same Name"
+];
+
 let audio = document.getElementById("audio");
 let sliderDeRango = document.getElementById("sliderDeRango");
 let progressBarContainer = document.getElementById("progressBarContainer");
@@ -39,12 +52,14 @@ function Anterior() {
   currentIndex = (currentIndex - 1 + songs.length) % songs.length;
   Cargar();
   Play();
+  updateNowPlaying();
 }
 
 function Posterior() {
   currentIndex = (currentIndex + 1) % songs.length;
   Cargar();
   Play();
+  updateNowPlaying();
 }
 
 function Atrasar() {
@@ -86,6 +101,12 @@ function selectSong(index) {
   currentIndex = index; // Set the selected song index
   Cargar();
   Play(); // Automatically play the selected song
+  updateNowPlaying(); // Update the "Now Playing" title
+}
+
+function updateNowPlaying() {
+  const nowPlayingElement = document.getElementById("nowPlaying");
+  nowPlayingElement.textContent = songTitles[currentIndex]; // Set only the song title
 }
 
 // Sidebar toggle functionality
