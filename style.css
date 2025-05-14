@@ -225,3 +225,65 @@ li:active {
     background-color: rgba(255,255,255,0.6);
     height: 80%;
 }
+
+@media (max-width: 768px) {
+    .Container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .Album {
+        width: 80vw;
+    }
+
+    .Img-Album {
+        width: 90%;
+        margin-top: 5vh;
+    }
+
+    h1 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .Music-List {
+        margin-top: 5vh;
+    }
+
+    input {
+        font-size: 1rem;
+    }
+
+    ol {
+        font-size: 1rem;
+    }
+
+    li {
+        margin: 1vh;
+    }
+
+    #checkbox,
+    #btn__Anterior,
+    #btn__Atrasar,
+    #btn__PlayPause,
+    #btn__Adelantar,
+    #btn__Posterior {
+        height: 15px;
+        width: 15px;
+        font-size: 60%;
+    }
+
+    #Contenedor {
+        width: calc(100% - calc(15px * 6));
+        height: 3px;
+    }
+
+    #sliderDeRango:hover ~ contenedor {
+        height: 15px;
+    }
+
+    #barraPersonalizable {
+        height: 60%;
+    }
+}
