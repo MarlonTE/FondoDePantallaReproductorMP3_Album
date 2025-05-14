@@ -89,7 +89,9 @@ function selectSong(index) {
 }
 
 // Sidebar toggle functionality
-document.getElementById("toggleSidebar").addEventListener("click", function () {
+function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   sidebar.classList.toggle("open"); // Toggle the "open" class
-});
+}
+
+document.getElementById("toggleSidebar").addEventListener("click", toggleSidebar);

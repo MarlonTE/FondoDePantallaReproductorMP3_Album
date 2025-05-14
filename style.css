@@ -22,37 +22,40 @@ body {
   position: relative;
 }
 
-/* Blurred Album Wallpaper */
-body::before {
-  content: "";
-  position: absolute;
+/* Background Container */
+.Background {
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("img/feels-like-you.png") no-repeat center center/cover;
-  filter: blur(20px) brightness(0.5);
-  z-index: -1;
-  animation: moveBackground 20s infinite linear;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Ensure no overflow */
+  z-index: -1; /* Place it behind all content */
 }
 
-@keyframes moveBackground {
+/* Blurred Background Image */
+.Blurred-Background {
+  position: absolute; /* Position the image absolutely within the container */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 250%; /* Zoom to 300% for a dramatic effect */
+  height: 250%; /* Zoom to 300% for a dramatic effect */
+  object-fit: cover; /* Ensure the image covers the container */
+  transform: translate(-50%, -50%); /* Adjust position to center the image */
+  filter: blur(25px) brightness(0.4) saturate(1.5); /* Apply blur and dim the brightness */
+  animation: zoomAndMove 30s infinite alternate ease-in-out; /* Smooth zoom and movement */
+}
+
+/* Keyframes for Zoom and Movement */
+@keyframes zoomAndMove {
   0% {
-    transform: translate(0, 0);
+    transform: scale(1) translate(-50%, -50%); /* Start with no zoom or movement */
   }
   50% {
-    transform: translate(-10px, -10px);
+    transform: scale(1.25) translate(-50%, -50%); /* Slight zoom and movement */
   }
   100% {
-    transform: translate(0, 0);
-  }
-}
-
-/* Disable Background Animation on Mobile */
-@media (max-width: 768px) {
-  body::before {
-    animation: none;
-    transform: translate(0, 0);
+    transform: scale(1) translate(-50%, -50%); /* Return to original position */
   }
 }
 
@@ -90,18 +93,17 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Buttons and Slider Bar Container */
+/* Controls Container */
 #Controls {
-  position: fixed; /* Fix at the bottom of the viewport */
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  position: static; /* Remove fixed positioning */
+  width: 100%; /* Full width within the Album container */
+  background-color: transparent; /* Remove background color */
   display: flex;
   flex-direction: column; /* Stack slider and buttons vertically */
   align-items: center;
   justify-content: center;
   padding: 10px 0;
-  z-index: 10; /* Ensure it stays above other elements */
+  margin-top: 20px; /* Add spacing below the album title */
 }
 
 /* Slider Bar */
@@ -264,9 +266,9 @@ li:active {
   background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
-  transition: left 0.3s ease;
+  transition: left 0.3s ease; /* Smooth slide-in/out animation */
   z-index: 10;
-  padding: 20px; /* Add padding for spacing */
+  padding: 20px;
 }
 
 .Sidebar.open {
@@ -311,21 +313,17 @@ li:active {
 /* Button to Toggle Sidebar */
 #toggleSidebar {
   position: fixed;
-  top: 15px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
   width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  z-index: 11;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 20; /* Ensure it stays above the sidebar */
   transition: background-color 0.3s;
 }
 
