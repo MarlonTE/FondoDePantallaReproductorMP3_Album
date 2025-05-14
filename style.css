@@ -28,12 +28,12 @@ body::before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Set to 100% to fit the viewport */
-  height: 100%; /* Set to 100% to fit the viewport */
+  width: 100%;
+  height: 100%;
   background: url("img/feels-like-you.png") no-repeat center center/cover;
   filter: blur(20px) brightness(0.5);
-  z-index: -1; /* Place it behind all content */
-  animation: moveBackground 20s infinite linear; /* Add movement */
+  z-index: -1;
+  animation: moveBackground 20s infinite linear;
 }
 
 @keyframes moveBackground {
@@ -51,8 +51,8 @@ body::before {
 /* Disable Background Animation on Mobile */
 @media (max-width: 768px) {
   body::before {
-    animation: none; /* Disable background movement */
-    transform: translate(0, 0); /* Ensure it stays static */
+    animation: none;
+    transform: translate(0, 0);
   }
 }
 
@@ -60,13 +60,13 @@ body::before {
 .Container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Distribute elements evenly */
+  justify-content: space-between;
   align-items: center;
   width: 100vw;
-  height: 100vh; /* Ensure it fits within the viewport */
+  height: 100vh;
   overflow: hidden;
   position: relative;
-  padding: 0; /* Remove extra padding */
+  padding: 10px;
 }
 
 .Album {
@@ -74,27 +74,27 @@ body::before {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1; /* Allow it to take up available space */
+  flex: 1;
 }
 
 .Img-Album {
-  width: 40%; /* Reduce album art size */
-  max-width: 150px; /* Limit maximum size */
-  border-radius: 10%; /* Rounded corners */
-  margin-bottom: 10px; /* Add spacing below the album */
+  width: 75vw; /* Default size for mobile */
+  max-width: 300px; /* Limit size for larger screens */
+  border-radius: 10%;
+  margin-bottom: 10px;
 }
 
 h1 {
-  font-size: 1.2rem; /* Reduce font size */
+  font-size: 1.5rem;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /* Slider Bar */
 #sliderDeRango {
-  width: 90%; /* Full width above the buttons */
+  width: 90%;
   height: 5px;
-  margin: 5px 0; /* Reduce margin */
+  margin: 10px 0;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   appearance: none;
@@ -121,10 +121,10 @@ h1 {
 /* Music List */
 .Music-List {
   width: 100%;
-  max-height: 30%; /* Limit height */
+  max-height: 30%;
   overflow-y: auto;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
 
@@ -156,9 +156,9 @@ li:active {
 
 /* Buttons at the Bottom */
 #Controls {
-  position: relative; /* Keep it within the container */
+  position: relative;
   width: 100%;
-  height: 60px; /* Reduce height */
+  height: 60px;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: space-around;
@@ -206,14 +206,14 @@ li:active {
   position: fixed;
   top: 0;
   left: -250px; /* Hidden by default */
-  width: 250px; /* Reduce sidebar width */
+  width: 250px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
   transition: left 0.3s ease;
   z-index: 10;
-  padding: 15px;
+  padding: 20px; /* Add padding for spacing */
 }
 
 .Sidebar.open {
@@ -221,25 +221,28 @@ li:active {
 }
 
 .Sidebar h2 {
-  font-size: 1.2rem; /* Reduce font size */
+  font-size: 1.5rem; /* Larger font size for the title */
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px; /* Add spacing below the title */
+  color: #fff;
 }
 
 .Sidebar ol {
-  list-style-type: none;
+  list-style-type: none; /* Remove default numbering */
   padding: 0;
   margin: 0;
 }
 
 .Sidebar li {
-  margin: 5px 0;
-  padding: 8px;
+  margin: 10px 0; /* Add spacing between list items */
+  padding: 10px;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, opacity 0.3s;
+  font-size: 1rem; /* Adjust font size for readability */
+  color: #fff;
 }
 
 .Sidebar li:hover {
@@ -257,7 +260,7 @@ li:active {
   position: fixed;
   top: 15px;
   left: 15px;
-  width: 40px; /* Reduce button size */
+  width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   border: none;
@@ -277,7 +280,9 @@ li:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Mobile-specific styles */
+/* Responsive Styles */
+
+/* Small Devices (Mobile) */
 @media (max-width: 768px) {
   .Container {
     flex-direction: column;
@@ -292,13 +297,14 @@ li:active {
   }
 
   .Img-Album {
-    width: 100%;
+    width: 90vw; /* Larger album cover for small screens */
+    max-width: none; /* Remove max-width restriction */
     margin-top: 5vh;
     border-radius: 10%;
   }
 
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.2rem; /* Smaller font size */
     text-align: center;
   }
 
@@ -317,26 +323,26 @@ li:active {
     font-size: 1rem;
     padding: 0;
     margin: 0;
-    list-style-type: none; /* Remove default numbering for a cleaner look */
+    list-style-type: none;
   }
 
   li {
     margin: 1vh 0;
     padding: 10px;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.1); /* Add a subtle background for better visibility */
-    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, opacity 0.3s;
   }
 
   li:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+    background-color: rgba(255, 255, 255, 0.2);
     opacity: 0.8;
   }
 
   li:active {
-    background-color: rgba(255, 255, 255, 0.3); /* Active state for touch feedback */
+    background-color: rgba(255, 255, 255, 0.3);
     opacity: 0.6;
   }
 
@@ -346,12 +352,12 @@ li:active {
   #btn__PlayPause,
   #btn__Adelantar,
   #btn__Posterior {
-    height: 50px; /* Increase button size for better tap targets */
-    width: 50px;
-    font-size: 1.2rem; /* Adjust font size for better readability */
-    margin: 10px; /* Add spacing between buttons */
-    border-radius: 10px; /* Add rounded corners for a modern look */
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle background for better visibility */
+    height: 35px; /* Smaller buttons */
+    width: 35px;
+    font-size: 0.9rem;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -363,8 +369,8 @@ li:active {
   #btn__PlayPause:hover,
   #btn__Adelantar:hover,
   #btn__Posterior:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Add a border for hover feedback */
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
   #checkbox:active,
@@ -373,11 +379,11 @@ li:active {
   #btn__PlayPause:active,
   #btn__Adelantar:active,
   #btn__Posterior:active {
-    background-color: rgba(255, 255, 255, 0.3); /* Active state for touch feedback */
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
   #btn__Anterior {
-    left: 10%; /* Adjust positioning for better alignment */
+    left: 10%;
   }
 
   #btn__Atrasar {
@@ -398,15 +404,76 @@ li:active {
 
   #Contenedor {
     width: 90%;
-    height: 10px; /* Adjust height for better usability */
-    margin-top: 20px; /* Add spacing above the slider */
+    height: 10px;
+    margin-top: 20px;
   }
 
   #sliderDeRango {
+    width: 95%; /* Full width for slider */
     height: 10px;
   }
 
   #barraPersonalizable {
     height: 5px;
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .Img-Album {
+    width: 60vw; /* Adjust album size for tablets */
+    max-width: 250px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  #sliderDeRango {
+    width: 90%;
+  }
+
+  #Controls {
+    height: 60px;
+  }
+
+  #btn__Anterior,
+  #btn__Atrasar,
+  #btn__PlayPause,
+  #btn__Adelantar,
+  #btn__Posterior {
+    height: 40px;
+    width: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 1025px) {
+  .Img-Album {
+    width: 50vw; /* Smaller album cover for large screens */
+    max-width: 300px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #sliderDeRango {
+    width: 80%;
+  }
+
+  #Controls {
+    height: 70px;
+  }
+
+  #btn__Anterior,
+  #btn__Atrasar,
+  #btn__PlayPause,
+  #btn__Adelantar,
+  #btn__Posterior {
+    height: 50px;
+    width: 50px;
+    font-size: 1.2rem;
   }
 }

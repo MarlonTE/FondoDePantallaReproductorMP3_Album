@@ -63,6 +63,13 @@ function actualizarBarra() {
 
 setInterval(actualizarBarra, 250);
 
+function selectSong(index) {
+  currentIndex = index; // Set the selected song index
+  Cargar();
+  Play(); // Automatically play the selected song
+}
+
+// Sidebar toggle functionality
 document.getElementById("toggleSidebar").addEventListener("click", function () {
   const sidebar = document.getElementById("sidebar");
   sidebar.classList.toggle("open"); // Toggle the "open" class
