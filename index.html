@@ -9,13 +9,10 @@
 <body>
 
 <div class="Container">
-    <div class="Album">
-        <h1>Whirr</h1>
-        <img class="Img-Album" src="img/feels-like-you.png" alt="Album Art">
-        <h1>Feels Like You</h1>
-    </div>
+    <button id="toggleSidebar">☰</button> <!-- Sidebar toggle button -->
 
-    <div class="Music-List">
+    <div class="Sidebar" id="sidebar">
+        <h2>Song List</h2>
         <ol id="list">
             <li id="oo1" onclick="javascript:song01();">Mellow</li>
             <li id="oo2" onclick="javascript:song02();">Wavelength</li>
@@ -28,6 +25,12 @@
             <li id="oo9" onclick="javascript:song09();">Play The Slow Ones</li>
             <li id="o1o" onclick="javascript:song10();">Under The Same Name</li>
         </ol>
+    </div>
+
+    <div class="Album">
+        <h1>Whirr</h1>
+        <img class="Img-Album" src="img/feels-like-you.png" alt="Album Art">
+        <h1>Feels Like You</h1>
     </div>
 
     <div id="Controls">

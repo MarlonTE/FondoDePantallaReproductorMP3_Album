@@ -100,3 +100,8 @@ function actualizarBarra() {
     barraPersonalizable.style.width = (100/audio.duration)*(document.getElementById("Contenedor").clientWidth/100)*audio.currentTime + "px";
 }
 setInterval(actualizarBarra, 250);
+
+document.getElementById("toggleSidebar").addEventListener("click", function () {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("open"); // Toggle the "open" class
+});

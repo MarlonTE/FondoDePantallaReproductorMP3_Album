@@ -1,3 +1,4 @@
+/* General Reset */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -12,23 +13,39 @@
   transition: all 0.3s;
   user-select: none;
   color: #fff;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-weight: 200;
 }
 body {
-  background-color: rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0, 1);
+  overflow: hidden;
+  position: relative;
 }
 
-/* General Styles */
+/* Blurred Album Wallpaper */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("img/feels-like-you.png") no-repeat center center/cover;
+  filter: blur(20px) brightness(0.5);
+  z-index: -1; /* Place it behind all content */
+}
+
+/* General Layout */
 .Container {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
+  padding: 20px;
 }
 
 .Album {
@@ -58,6 +75,10 @@ h1 {
   margin-top: 2vh;
   overflow-y: auto;
   max-height: 40vh; /* Limit height for scrolling */
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 ol {
@@ -100,7 +121,35 @@ li:active {
   box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
 }
 
-#checkbox,
+#checkbox {
+  appearance: none; /* Remove default checkbox styling */
+  height: 50px; /* Match button size */
+  width: 50px;
+  font-size: 1.2rem; /* Adjust font size */
+  margin: 10px; /* Add spacing */
+  border-radius: 10px; /* Rounded corners */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Pointer cursor for interactivity */
+  border: none; /* Remove default border */
+  transition: background-color 0.3s, border 0.3s;
+}
+
+#checkbox:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Add border for hover feedback */
+}
+
+#checkbox:active {
+  background-color: rgba(255, 255, 255, 0.3); /* Active state for touch feedback */
+}
+
+#checkbox:checked {
+  background-color: rgba(0, 255, 0, 0.3); /* Green background when checked */
+}
+
 #btn__Anterior,
 #btn__Atrasar,
 #btn__PlayPause,
@@ -119,7 +168,6 @@ li:active {
   transition: background-color 0.3s, border 0.3s;
 }
 
-#checkbox:hover,
 #btn__Anterior:hover,
 #btn__Atrasar:hover,
 #btn__PlayPause:hover,
@@ -129,13 +177,88 @@ li:active {
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-#checkbox:active,
 #btn__Anterior:active,
 #btn__Atrasar:active,
 #btn__PlayPause:active,
 #btn__Adelantar:active,
 #btn__Posterior:active {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Sidebar Styles */
+.Sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Hidden by default */
+  width: 300px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  transition: left 0.3s ease; /* Smooth slide-in/out */
+  z-index: 10; /* Above other content */
+  padding: 20px;
+}
+
+.Sidebar.open {
+  left: 0; /* Slide in when open */
+}
+
+.Sidebar h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.Sidebar ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Sidebar li {
+  margin: 1vh 0;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+.Sidebar li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 0.8;
+}
+
+.Sidebar li:active {
+  background-color: rgba(255, 255, 255, 0.3);
+  opacity: 0.6;
+}
+
+/* Button to Toggle Sidebar */
+#toggleSidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 11; /* Above the sidebar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s;
+}
+
+#toggleSidebar:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Mobile-specific styles */
